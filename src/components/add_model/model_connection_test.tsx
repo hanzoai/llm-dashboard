@@ -30,7 +30,7 @@ const ModelConnectionTest: React.FC<ModelConnectionTestProps> = ({
   const [isSuccess, setIsSuccess] = React.useState<boolean>(false);
   const [showDetails, setShowDetails] = React.useState<boolean>(false);
 
-  const testModelConnection = async () => {
+  const testModelConnection = React.useCallback(async () => {
     setIsLoading(true);
     setShowDetails(false);
     setError(null);
@@ -77,7 +77,7 @@ const ModelConnectionTest: React.FC<ModelConnectionTestProps> = ({
       setIsLoading(false);
       if (onTestComplete) onTestComplete();
     }
-  };
+  }, [formValues, accessToken, onTestComplete]);
 
   React.useEffect(() => {
     // Run the test once when component mounts
@@ -87,7 +87,7 @@ const ModelConnectionTest: React.FC<ModelConnectionTestProps> = ({
     }, 200);
     
     return () => clearTimeout(timer);
-  }, []); // Empty dependency array means this runs once on mount
+  }, [testModelConnection]); // Include testModelConnection in the dependency array
 
   const getCleanErrorMessage = (errorMsg: string) => {
     if (!errorMsg) return "Unknown error";

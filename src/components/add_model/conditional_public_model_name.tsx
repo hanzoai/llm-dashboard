@@ -10,8 +10,13 @@ const ConditionalPublicModelName: React.FC = () => {
 
   // Watch the 'model' field for changes and ensure it's always an array
   const modelValue = Form.useWatch('model', form) || [];
-  const selectedModels = Array.isArray(modelValue) ? modelValue : [modelValue];
   const customModelName = Form.useWatch('custom_model_name', form);
+  
+  // Wrap selectedModels in useMemo to avoid recreating on every render
+  const selectedModels = React.useMemo(() => {
+    return Array.isArray(modelValue) ? modelValue : [modelValue];
+  }, [modelValue]);
+  
   const showPublicModelName = !selectedModels.includes('all-wildcard');
 
   // Force table to re-render when custom model name changes

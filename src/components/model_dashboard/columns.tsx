@@ -1,6 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Button, Badge, Icon } from "@tremor/react";
 import { Tooltip } from "antd";
+import Image from "next/image";
 import { getProviderLogoAndName } from "../provider_info_helpers";
 import { ModelData } from "./types";
 import { TrashIcon, PencilIcon, PencilAltIcon } from "@heroicons/react/outline";
@@ -58,9 +59,11 @@ export const columns = (
       return (
         <div className="flex items-center space-x-2">
           {model.provider && (
-            <img
+            <Image
               src={getProviderLogoAndName(model.provider).logo}
               alt={`${model.provider} logo`}
+              width={16}
+              height={16}
               className="w-4 h-4"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;

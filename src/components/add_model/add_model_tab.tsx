@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Form, Button, Tooltip, Typography, Select as AntdSelect, Modal } from "antd";
 import type { FormInstance } from "antd";
 import type { UploadProps } from "antd/es/upload";
+import Image from "next/image";
 import LLMModelNameField from "./llm_model_name";
 import ConditionalPublicModelName from "./conditional_public_model_name";
 import ProviderSpecificFields from "./provider_specific_fields";
@@ -103,9 +104,11 @@ const AddModelTab: React.FC<AddModelTabProps> = ({
                     value={providerEnum}
                   >
                     <div className="flex items-center space-x-2">
-                      <img
+                      <Image
                         src={providerLogoMap[providerDisplayName]}
                         alt={`${providerEnum} logo`}
+                        width={20}
+                        height={20}
                         className="w-5 h-5"
                         onError={(e) => {
                           // Create a div with provider initial as fallback

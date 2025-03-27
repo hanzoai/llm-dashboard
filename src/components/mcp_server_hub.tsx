@@ -208,7 +208,7 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
                 <Button 
                   size="xs" 
                   variant="light" 
-                  icon={<ReloadOutlined />}
+                  icon={ReloadOutlined as any}
                   className="ml-2" 
                   onClick={fetchServers}
                   disabled={loading}
@@ -230,7 +230,7 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
           <div className="mb-8 ml-8 mt-2">
             <Text>
               MCP servers extend your AI assistants with powerful tools and capabilities. 
-              Use these servers with OpenAI's Assistants API or Anthropic's Claude to add specialized functionality.
+              Use these servers with OpenAI&apos;s Assistants API or Anthropic&apos;s Claude to add specialized functionality.
             </Text>
           </div>
 
@@ -317,7 +317,7 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
                   <div className="mt-4 pt-2 border-t border-gray-100 flex justify-between items-center">
                     <Tooltip title="View usage examples">
                       <Button 
-                        size="small" 
+                        size="xs" 
                         className="text-xs"
                         onClick={() => showModal(server)}
                       >
@@ -347,9 +347,9 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
           <Text className="text-xl text-center mb-2 text-black">
             Public MCP Server Hub not enabled.
           </Text>
-          <p className="text-base text-center text-slate-800">
+      <p className="text-base text-center text-slate-800">
             Ask your proxy admin to enable this on their Admin UI.
-          </p>
+      </p>
         </Card>
       )}
 
@@ -473,9 +473,9 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
                 </TabPanel>
                 <TabPanel>
                   <div className="mb-3 p-3 bg-yellow-50 rounded">
-                      <p className="text-sm text-yellow-700">
-                        This example shows how to use the {selectedServer.name} server with OpenAI&apos;s Assistants API.
-                      </p>
+        <p className="text-sm text-yellow-700">
+            This example shows how to use the {selectedServer.name} server with OpenAI&apos;s Assistants API.
+        </p>
                   </div>
                   <SyntaxHighlighter language="python">
                     {`

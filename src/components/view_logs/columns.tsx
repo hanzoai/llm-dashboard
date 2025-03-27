@@ -2,6 +2,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { getCountryFromIP } from "./ip_lookup";
 import moment from "moment";
 import React from "react";
+import Image from "next/image";
 import { CountryCell } from "./country_cell";
 import { getProviderLogoAndName } from "../provider_info_helpers";
 import { Tooltip } from "antd";
@@ -166,9 +167,11 @@ export const columns: ColumnDef<LogEntry>[] = [
       return (
         <div className="flex items-center space-x-2">
           {provider && (
-            <img
+            <Image
               src={getProviderLogoAndName(provider).logo}
               alt=""
+              width={16}
+              height={16}
               className="w-4 h-4"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;

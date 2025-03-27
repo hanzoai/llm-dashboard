@@ -146,7 +146,7 @@ const ChatUI: React.FC<ChatUIProps> = ({
     };
   
     fetchModelInfo();
-  }, [accessToken, userID, userRole, apiKeySource, apiKey]);
+  }, [accessToken, userID, userRole, apiKeySource, apiKey, token]);
   
 
   useEffect(() => {

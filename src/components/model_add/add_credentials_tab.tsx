@@ -11,6 +11,7 @@ import {
   Modal 
 } from "antd";
 import type { UploadProps } from "antd/es/upload";
+import Image from "next/image";
 import { Providers, providerLogoMap } from "../provider_info_helpers";
 import type { FormInstance } from "antd";
 import ProviderSpecificFields from "../add_model/provider_specific_fields";
@@ -100,9 +101,11 @@ const AddCredentialsModal: React.FC<AddCredentialsModalProps> = ({
                 value={providerEnum}
               >
                 <div className="flex items-center space-x-2">
-                  <img
+                  <Image
                     src={providerLogoMap[providerDisplayName]}
                     alt={`${providerEnum} logo`}
+                    width={20}
+                    height={20}
                     className="w-5 h-5"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;

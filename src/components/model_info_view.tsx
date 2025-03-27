@@ -15,6 +15,7 @@ import {
   NumberInput,
 } from "@tremor/react";
 import { ArrowLeftIcon, TrashIcon, KeyIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 import { modelDeleteCall, modelUpdateCall, CredentialItem, credentialGetCall, credentialCreateCall, modelInfoCall, modelInfoV1Call } from "./networking";
 import { Button, Form, Input, InputNumber, message, Select, Modal } from "antd";
 import EditModelModal from "./edit_model/edit_model_modal";
@@ -245,9 +246,11 @@ export default function ModelInfoView({
                 <Text>Provider</Text>
                 <div className="mt-2 flex items-center space-x-2">
                   {modelData.provider && (
-                    <img
+                    <Image
                       src={getProviderLogoAndName(modelData.provider).logo}
                       alt={`${modelData.provider} logo`}
+                      width={16}
+                      height={16}
                       className="w-4 h-4"
                       onError={(e) => {
                         // Create a div with provider initial as fallback
