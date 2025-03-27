@@ -875,7 +875,7 @@ const ModelDashboard: React.FC<ModelDashboardProps> = ({
                               setSelectedAPIKey(key);
                             }}
                           >
-                            ✨ {key["key_alias"]} (Enterprise only Feature)
+                            {key["key_alias"]} (Contact sales for access)
                           </SelectItem>
                         );
                       }
@@ -910,7 +910,7 @@ const ModelDashboard: React.FC<ModelDashboardProps> = ({
                       setSelectedCustomer(user);
                     }}
                   >
-                    ✨ {user} (Enterprise only Feature)
+                    {user} (Contact sales for access)
                   </SelectItem>
                 );
               })

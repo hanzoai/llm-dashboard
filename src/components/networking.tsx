@@ -141,13 +141,13 @@ export const modelCreateCall = async (
 
     const data = await response.json();
     console.log("API Response:", data);
-    
+
     // Close any existing messages before showing new ones
     message.destroy();
-    
+
     // Sequential success messages
     message.success(`Model ${formValues.model_name} created successfully`, 2);
-    
+
     return data;
   } catch (error) {
     console.error("Failed to create key:", error);
@@ -668,7 +668,7 @@ export const teamDeleteCall = async (accessToken: String, teamID: String) => {
 
 
 export const userListCall = async (
-  accessToken: String, 
+  accessToken: String,
   userIDs: string[] | null = null,
   page: number | null = null,
   page_size: number | null = null,
@@ -680,21 +680,21 @@ export const userListCall = async (
     let url = proxyBaseUrl ? `${proxyBaseUrl}/user/list` : `/user/list`;
     console.log("in userListCall");
     const queryParams = new URLSearchParams();
-    
+
     if (userIDs && userIDs.length > 0) {
       // Convert array to comma-separated string
       const userIDsString = userIDs.join(',');
       queryParams.append('user_ids', userIDsString);
     }
-    
+
     if (page) {
       queryParams.append('page', page.toString());
     }
-    
+
     if (page_size) {
       queryParams.append('page_size', page_size.toString());
     }
-    
+
     const queryString = queryParams.toString();
     if (queryString) {
       url += `?${queryString}`;
@@ -736,7 +736,7 @@ export const userInfoCall = async (
 ) => {
   try {
     let url: string;
-    
+
     if (viewAll) {
       // Use /user/list endpoint when viewAll is true
       url = proxyBaseUrl ? `${proxyBaseUrl}/user/list` : `/user/list`;
@@ -748,7 +748,7 @@ export const userInfoCall = async (
       // Use /user/info endpoint for individual user info
       url = proxyBaseUrl ? `${proxyBaseUrl}/user/info` : `/user/info`;
       if (userRole === "Admin" || userRole === "Admin Viewer") {
-        // do nothing 
+        // do nothing
       } else if (userID) {
         url += `?user_id=${userID}`;
       }
@@ -813,7 +813,7 @@ export const teamInfoCall = async (
 };
 
 export const teamListCall = async (
-  accessToken: String, 
+  accessToken: String,
   organizationID: string | null,
   userID: String | null = null,
 ) => {
@@ -824,15 +824,15 @@ export const teamListCall = async (
     let url = proxyBaseUrl ? `${proxyBaseUrl}/team/list` : `/team/list`;
     console.log("in teamInfoCall");
     const queryParams = new URLSearchParams();
-    
+
     if (userID) {
       queryParams.append('user_id', userID.toString());
     }
-    
+
     if (organizationID) {
       queryParams.append('organization_id', organizationID.toString());
     }
-    
+
     const queryString = queryParams.toString();
     if (queryString) {
       url += `?${queryString}`;
@@ -864,7 +864,7 @@ export const teamListCall = async (
 
 
 export const availableTeamListCall = async (
-  accessToken: String, 
+  accessToken: String,
 ) => {
   /**
    * Get all available teams on proxy
@@ -1233,7 +1233,7 @@ export const modelInfoCall = async (
         }
         message.info(errorData, 10);
         ModelListerrorShown = true;
-        
+
         if (errorTimer) clearTimeout(errorTimer);
         errorTimer = setTimeout(() => {
           ModelListerrorShown = false;
@@ -1319,37 +1319,6 @@ export const modelHubCall = async (accessToken: String) => {
   }
 };
 
-export const mcpServerCall = async (accessToken: String) => {
-  /**
-   * Get all MCP servers on proxy
-   */
-  try {
-    let url = proxyBaseUrl
-      ? `${proxyBaseUrl}/api/mcps`
-      : `/api/mcps`;
-
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        ...(accessToken ? { [globalLLMHeaderName]: `Bearer ${accessToken}` } : {})
-      },
-    });
-
-    if (!response.ok) {
-      const errorData = await response.text();
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Failed to fetch MCP server data:", error);
-    throw error;
-  }
-};
-
 export const getMCPServerUsageStats = async (accessToken: String, serverName?: string) => {
   /**
    * Get usage statistics for an MCP server
@@ -1358,7 +1327,7 @@ export const getMCPServerUsageStats = async (accessToken: String, serverName?: s
     let url = proxyBaseUrl
       ? `${proxyBaseUrl}/mcp/admin/usage`
       : `/mcp/admin/usage`;
-    
+
     if (serverName) {
       url += `?server_name=${encodeURIComponent(serverName)}`;
     }
@@ -1951,7 +1920,7 @@ export const userSpendLogsCall = async (
 
 export const uiSpendLogsCall = async (
   accessToken: String,
-  api_key?: string, 
+  api_key?: string,
   team_id?: string,
   request_id?: string,
   start_date?: string,
@@ -2418,10 +2387,10 @@ export const testConnectionRequest = async (
 ) => {
   try {
     console.log("Sending model connection test request:", JSON.stringify(llm_params));
-    
+
     // Construct the URL based on environment
     const url = proxyBaseUrl ? `${proxyBaseUrl}/health/test_connection` : `/health/test_connection`;
-        
+
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -2445,7 +2414,7 @@ export const testConnectionRequest = async (
     }
 
     const data = await response.json();
-    
+
     if (!response.ok || data.status === "error") {
       // Return the error response instead of throwing an error
       // This allows the caller to handle the error format properly
@@ -2499,7 +2468,7 @@ export const keyInfoV1Call = async (accessToken: string, key: string) => {
 
 
 export const keyListCall = async (
-  accessToken: String, 
+  accessToken: String,
   organizationID: string | null,
   teamID: string | null,
   page: number,
@@ -2512,11 +2481,11 @@ export const keyListCall = async (
     let url = proxyBaseUrl ? `${proxyBaseUrl}/key/list` : `/key/list`;
     console.log("in keyListCall");
     const queryParams = new URLSearchParams();
-    
+
     if (teamID) {
       queryParams.append('team_id', teamID.toString());
     }
-    
+
     if (organizationID) {
       queryParams.append('organization_id', organizationID.toString());
     }
@@ -2531,7 +2500,7 @@ export const keyListCall = async (
 
     queryParams.append('return_full_object', 'true');
     queryParams.append('include_team_keys', 'true');
-    
+
     const queryString = queryParams.toString();
     if (queryString) {
       url += `?${queryString}`;
@@ -2813,7 +2782,7 @@ export const credentialCreateCall = async (
 };
 
 export const credentialListCall = async (
-  accessToken: String, 
+  accessToken: String,
 ) => {
   /**
    * Get all available teams on proxy
@@ -3144,7 +3113,7 @@ export const teamMemberUpdateCall = async (
       },
       body: JSON.stringify({
         team_id: teamId,
-        role: formValues.role,  
+        role: formValues.role,
         user_id: formValues.user_id,
       }),
     });
@@ -4043,12 +4012,12 @@ export const uiSpendLogDetailsCall = async (
 ) => {
   try {
     // Construct base URL
-    let url = proxyBaseUrl 
+    let url = proxyBaseUrl
       ? `${proxyBaseUrl}/spend/logs/ui/${logId}?start_date=${encodeURIComponent(start_date)}`
       : `/spend/logs/ui/${logId}?start_date=${encodeURIComponent(start_date)}`;
 
     console.log("Fetching log details from:", url);
-    
+
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -4075,12 +4044,12 @@ export const uiSpendLogDetailsCall = async (
 export const getInternalUserSettings = async (accessToken: string) => {
   try {
     // Construct base URL
-    let url = proxyBaseUrl 
+    let url = proxyBaseUrl
       ? `${proxyBaseUrl}/get/internal_user_settings`
       : `/get/internal_user_settings`;
 
     console.log("Fetching SSO settings from:", url);
-    
+
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -4108,12 +4077,12 @@ export const getInternalUserSettings = async (accessToken: string) => {
 export const updateInternalUserSettings = async (accessToken: string, settings: Record<string, any>) => {
   try {
     // Construct base URL
-    let url = proxyBaseUrl 
+    let url = proxyBaseUrl
       ? `${proxyBaseUrl}/update/internal_user_settings`
       : `/update/internal_user_settings`;
 
     console.log("Updating internal user settings:", settings);
-    
+
     const response = await fetch(url, {
       method: "PATCH",
       headers: {
@@ -4151,11 +4120,11 @@ export async function mcpServerCall(accessToken: string | null) {
           "Content-Type": "application/json",
         },
       });
-      
+
       if (!response.ok) {
         throw new Error(`Error fetching MCP servers: ${response.statusText}`);
       }
-      
+
       return await response.json();
     } else {
       // Public view - unauthenticated
@@ -4165,11 +4134,11 @@ export async function mcpServerCall(accessToken: string | null) {
           "Content-Type": "application/json",
         },
       });
-      
+
       if (!response.ok) {
         throw new Error(`Error fetching MCP servers: ${response.statusText}`);
       }
-      
+
       return await response.json();
     }
   } catch (error) {
@@ -4177,47 +4146,3 @@ export async function mcpServerCall(accessToken: string | null) {
     return {};
   }
 }
-
-export async function getMCPServerUsageStats(accessToken: string) {
-  try {
-    const response = await fetch("/mcp/admin/usage", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-    });
-    
-    if (!response.ok) {
-      throw new Error(`Error fetching MCP server usage: ${response.statusText}`);
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching MCP server usage:", error);
-    return {};
-  }
-}
-
-export async function updateMCPServerConfig(accessToken: string, serverName: string, config: { enabled: boolean }) {
-  try {
-    const response = await fetch(`/mcp/admin/servers/${serverName}`, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(config),
-    });
-    
-    if (!response.ok) {
-      throw new Error(`Error updating MCP server: ${response.statusText}`);
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error(`Error updating MCP server ${serverName}:`, error);
-    throw error;
-  }
-}
-

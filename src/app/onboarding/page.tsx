@@ -110,12 +110,12 @@ export default function Onboarding() {
           color="sky"
         >
           <Grid numItems={2} className="flex justify-between items-center">
-            <Col>SSO is under the Enterprise Tirer.</Col>
+            <Col>Contact sales to learn more about SSO.</Col>
 
             <Col>
               <Button variant="primary" className="mb-2">
-                <a href="https://forms.gle/W3U4PZpJGFHWtHyA9" target="_blank">
-                  Get Free Trial
+                <a href="mailto:sales@hanzo.ai" target="_blank">
+                  Contact Sales
                 </a>
               </Button>
             </Col>

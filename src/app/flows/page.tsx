@@ -96,7 +96,7 @@ export default function FlowsPage() {
       <div className="mt-12 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
         <Title className="text-lg mb-2">Coming Soon: Langflow Integration</Title>
         <Text>
-          We're working on integrating Langflow to provide a powerful visual builder for creating AI workflows.
+          We&apos;re working on integrating Langflow to provide a powerful visual builder for creating AI workflows.
           Stay tuned for updates!
         </Text>
       </div>

@@ -376,7 +376,7 @@ const ViewKeyTable: React.FC<ViewKeyTableProps> = ({
   const handleRegenerateKey = async () => {
     if (!premiumUser) {
       message.error(
-        "Regenerate API Key is an Enterprise feature. Please upgrade to use this feature."
+        "Please contact sales to learn more about the Regenerate API Key feature."
       );
       return;
     }
@@ -557,7 +557,7 @@ const ViewKeyTable: React.FC<ViewKeyTableProps> = ({
             </p>
             <Button variant="primary" className="mb-2">
               <a
-                href="https://calendly.com/d/4mp-gd3-k5k/llm-1-1-onboarding-chat"
+                href="mailto:sales@hanzo.ai"
                 target="_blank"
               >
                 Get Free Trial

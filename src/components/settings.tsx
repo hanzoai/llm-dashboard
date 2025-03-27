@@ -597,12 +597,12 @@ const Settings: React.FC<SettingsPageProps> = ({
                                   onChange={() => handleSwitchChange(key)}
                                 />
                               ) : (
-                                <Button className="flex items-center justify-center">
+                                  <Button className="flex items-center justify-center" disabled={true}>
                                   <a
-                                    href="https://forms.gle/W3U4PZpJGFHWtHyA9"
+                                    href="mailto:sales@hanzo.ai"
                                     target="_blank"
                                   >
-                                    ✨ Enterprise Feature
+                                    Contact Sales
                                   </a>
                                 </Button>
                               )

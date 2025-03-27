@@ -473,9 +473,9 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
                 </TabPanel>
                 <TabPanel>
                   <div className="mb-3 p-3 bg-yellow-50 rounded">
-                    <p className="text-sm text-yellow-700">
-                      This example shows how to use the {selectedServer.name} server with OpenAI's Assistants API.
-                    </p>
+                      <p className="text-sm text-yellow-700">
+                        This example shows how to use the {selectedServer.name} server with OpenAI&apos;s Assistants API.
+                      </p>
                   </div>
                   <SyntaxHighlighter language="python">
                     {`
@@ -550,7 +550,7 @@ while True:
                 <TabPanel>
                   <div className="mb-3 p-3 bg-indigo-50 rounded">
                     <p className="text-sm text-indigo-700">
-                      This example shows how to use the {selectedServer.name} server with Anthropic's Claude API.
+                      This example shows how to use the {selectedServer.name} server with Anthropic&apos;s Claude API.
                     </p>
                   </div>
                   <SyntaxHighlighter language="python">

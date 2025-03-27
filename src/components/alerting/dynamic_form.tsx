@@ -88,9 +88,9 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
               </Form.Item>
             ) : (
               <TableCell>
-                <Button className="flex items-center justify-center">
-                  <a href="https://forms.gle/W3U4PZpJGFHWtHyA9" target="_blank">
-                    ✨ Enterprise Feature
+                <Button className="flex items-center justify-center" disabled={true}>
+                  <a href="mailto:sales@hanzo.ai" target="_blank">
+                    Contact Sales
                   </a>
                 </Button>
               </TableCell>
