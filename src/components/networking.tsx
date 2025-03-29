@@ -3,8 +3,11 @@
  */
 import { message } from "antd";
 
+// Set this to true to use localhost, false to use production API
+const useLocalApi = false;
 const isLocal = process.env.NODE_ENV === "development";
-export const proxyBaseUrl = isLocal ? "http://localhost:4000" : null;
+// When in development mode, we can choose to use local or production API
+export const proxyBaseUrl = isLocal ? (useLocalApi ? "http://localhost:4000" : "https://api.hanzo.ai") : null;
 if (isLocal != true) {
   console.log = function() {};
 }

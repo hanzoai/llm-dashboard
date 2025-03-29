@@ -83,7 +83,7 @@ export default function Onboarding() {
       userID,
       formValues.password
     ).then((data) => {
-      let llm_dashboard_ui = "/ui/";
+      let llm_dashboard_ui = "/";
       const user_id = data.data?.user_id || data.user_id;
       llm_dashboard_ui += "?userID=" + user_id;
 

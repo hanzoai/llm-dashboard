@@ -34,8 +34,9 @@ import {
 import { Modal, Typography, Form, Input, Select, Button as Button2, message } from "antd";
 
 const { Title, Paragraph } = Typography;
+import { proxyBaseUrl } from "./networking";
+
 const isLocal = process.env.NODE_ENV === "development";
-const proxyBaseUrl = isLocal ? "http://localhost:4000" : null;
 if (isLocal != true) {
   console.log = function() {};
 }

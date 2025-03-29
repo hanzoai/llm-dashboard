@@ -56,7 +56,7 @@ export const provider_map: Record<string, string> = {
     FireworksAI: "fireworks_ai"
 };
 
-const asset_logos_folder = '/ui/assets/logos/';
+ const asset_logos_folder = '/assets/logos/';
 
 export const providerLogoMap: Record<string, string> = {
     [Providers.Anthropic]: `${asset_logos_folder}anthropic.svg`,

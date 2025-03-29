@@ -22,12 +22,7 @@ import { Team } from "./key_team_helpers/key_list";
 import { jwtDecode } from "jwt-decode";
 import { Typography } from "antd";
 import { clearTokenCookies } from "@/utils/cookieUtils";
-const isLocal = process.env.NODE_ENV === "development";
-if (isLocal != true) {
-  console.log = function() {};
-}
-console.log("isLocal:", isLocal);
-const proxyBaseUrl = isLocal ? "http://localhost:4000" : null;
+import { proxyBaseUrl } from "./networking";
 
 export interface ProxySettings {
   PROXY_BASE_URL: string | null;

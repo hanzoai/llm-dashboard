@@ -222,7 +222,7 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
             ) : (
               <div className="flex justify-between items-center">
                 <p>Filter by key:</p>
-                <Text className="bg-gray-200 pr-2 pl-2 pt-1 pb-1 text-center">{`/ui/mcp_servers?key=<YOUR_KEY>`}</Text>
+                <Text className="bg-gray-200 pr-2 pl-2 pt-1 pb-1 text-center">{`/mcp_servers?key=<YOUR_KEY>`}</Text>
               </div>
             )}
           </div>
@@ -364,7 +364,7 @@ const MCPServerHub: React.FC<MCPServerHubProps> = ({
         <div className="pt-5 pb-5">
           <div className="flex justify-between mb-4">
             <Text className="text-base mr-2">Shareable Link:</Text>
-            <Text className="max-w-sm ml-2 bg-gray-200 pr-2 pl-2 pt-1 pb-1 text-center rounded">{`<proxy_base_url>/ui/mcp_servers?key=<YOUR_API_KEY>`}</Text>
+            <Text className="max-w-sm ml-2 bg-gray-200 pr-2 pl-2 pt-1 pb-1 text-center rounded">{`<proxy_base_url>/mcp_servers?key=<YOUR_API_KEY>`}</Text>
           </div>
           <div className="flex justify-end">
             <Button onClick={goToPublicMCPPage}>See Page</Button>

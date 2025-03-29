@@ -23,7 +23,7 @@ import {
 } from "@tremor/react";
 
 import { message, Select } from "antd";
-import { modelAvailableCall } from "./networking";
+import { modelAvailableCall, proxyBaseUrl as baseProxyUrl } from "./networking";
 import openai from "openai";
 import { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -51,7 +51,7 @@ async function generateModelResponse(
   }
   console.log("isLocal:", isLocal);
   const proxyBaseUrl = isLocal
-    ? "http://localhost:4000"
+    ? baseProxyUrl
     : window.location.origin;
   const client = new openai.OpenAI({
     apiKey: accessToken, // Replace with your OpenAI API key

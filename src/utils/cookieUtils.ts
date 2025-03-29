@@ -10,7 +10,7 @@ export function clearTokenCookies() {
   const domain = window.location.hostname;
   
   // Clear with various combinations of path and SameSite
-  const paths = ['/', '/ui'];
+  const paths = ['/'];
   const sameSiteValues = ['Lax', 'Strict', 'None'];
   
   paths.forEach(path => {

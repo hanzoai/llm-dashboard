@@ -38,6 +38,7 @@ import {
   serviceHealthCheck,
   updateConfigFieldSetting,
   deleteConfigFieldSetting,
+  proxyBaseUrl as baseProxyUrl,
 } from "./networking";
 import {
   Modal,
@@ -81,7 +82,7 @@ async function testFallbackModelResponse(
   }
   console.log("isLocal:", isLocal);
   const proxyBaseUrl = isLocal
-    ? "http://localhost:4000"
+    ? baseProxyUrl
     : window.location.origin;
   const client = new openai.OpenAI({
     apiKey: accessToken, // Replace with your OpenAI API key
