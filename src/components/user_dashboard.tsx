@@ -46,6 +46,9 @@ export type UserInfo = {
 }
 
 function getCookie(name: string) {
+  // Check if document is defined (client-side only)
+  if (typeof document === 'undefined') return null;
+  
   console.log("COOKIES", document.cookie)
   const cookieValue = document.cookie
       .split('; ')
@@ -296,17 +299,20 @@ const UserDashboard: React.FC<UserDashboardProps> = ({
 
   if (userID == null || token == null) {
     // user is not logged in as yet 
-    console.log("All cookies before redirect:", document.cookie);
-    
-    // Clear token cookies using the utility function
-    clearTokenCookies();
-    
-    const url = proxyBaseUrl
-      ? `${proxyBaseUrl}/sso/key/generate`
-      : `/sso/key/generate`;
-    
-    console.log("Full URL:", url);
-    window.location.href = url;
+    // Only access browser objects if running on client side
+    if (typeof document !== 'undefined') {
+      console.log("All cookies before redirect:", document.cookie);
+      
+      // Clear token cookies using the utility function
+      clearTokenCookies();
+      
+      const url = proxyBaseUrl
+        ? `${proxyBaseUrl}/sso/key/generate`
+        : `/sso/key/generate`;
+      
+      console.log("Full URL:", url);
+      window.location.href = url;
+    }
 
     return null;
   } else if (accessToken == null) {
@@ -328,7 +334,10 @@ const UserDashboard: React.FC<UserDashboardProps> = ({
   }
 
   console.log("inside user dashboard, selected team", selectedTeam);
-  console.log("All cookies after redirect:", document.cookie);
+  // Only log cookies on client side
+  if (typeof document !== 'undefined') {
+    console.log("All cookies after redirect:", document.cookie);
+  }
   return (
     <div className="w-full mx-4 h-[75vh]">
       <Grid numItems={1} className="gap-2 p-8 w-full mt-2">
