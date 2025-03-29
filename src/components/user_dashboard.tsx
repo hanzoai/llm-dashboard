@@ -293,22 +293,7 @@ const UserDashboard: React.FC<UserDashboardProps> = ({
   }
 
   if (userID == null || token == null) {
-    // user is not logged in as yet 
-    // Only access browser objects if running on client side
-    if (typeof document !== 'undefined') {
-      console.log("All cookies before redirect:", document.cookie);
-      
-      // Clear token cookies using the utility function
-      clearTokenCookies();
-      
-      const url = proxyBaseUrl
-        ? `${proxyBaseUrl}/sso/key/generate`
-        : `/sso/key/generate`;
-      
-      console.log("Full URL:", url);
-      window.location.href = url;
-    }
-
+    // Instead of redirecting, just return null and let parent component show login
     return null;
   } else if (accessToken == null) {
     return null;

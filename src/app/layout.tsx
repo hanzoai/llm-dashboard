@@ -7,8 +7,8 @@ import "./fonts.css"; // Import custom fonts
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Hanzo Dashboard",
-  description: "Hanzo AI Platform Dashboard",
+  title: "Hanzo Login | Enterprise LLM Platform",
+  description: "Secure access to Hanzo's enterprise LLM infrastructure",
   icons: {
     icon: "/favicon.ico", // Use local favicon
   },

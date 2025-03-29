@@ -23,6 +23,7 @@ import ModelHub from "@/components/model_hub";
 import APIRef from "@/components/api_ref";
 import ChatUI from "@/components/chat_ui";
 import Sidebar from "@/components/leftnav";
+import Login from "@/components/login";
 import Usage from "@/components/usage";
 import CacheDashboard from "@/components/cache_dashboard";
 import { setGlobalLLMHeaderName } from "@/components/networking";
@@ -192,7 +193,9 @@ export default function CreateKeyPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <QueryClientProvider client={queryClient}>
-        {invitation_id ? (
+        {!accessToken ? (
+          <Login />
+        ) : invitation_id ? (
           <UserDashboard
             userID={userID}
             userRole={userRole}
